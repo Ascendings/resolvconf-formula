@@ -1,0 +1,21 @@
+hosts:
+  # search paths (domains)
+  search_paths: []
+  
+  # name servers to use (Google's)
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
+  
+  # serach options
+  search_options: []
+  
+  # file configuration
+  file_owner: root
+  file_group: root
+  file_mode: '0644'
+  
+  # resolvconf package configuration
+  package_manage: True
+  package_installed: False
+  package_name: resolvconf
