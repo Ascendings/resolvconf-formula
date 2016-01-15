@@ -1,0 +1,18 @@
+{%- from "resolvconf/map.jinja" import resolvconf_settings with context %}
+#
+# Dynamic resolv.conf(5) file for glibc resolver(3)
+#
+# This file is managed by Salt! Do not edit by hand!
+#
+
+{% if searchpaths -%}
+search {% for searchpath in searchpaths %}{{ searchpath }} {% endfor %}
+{%- endif %}
+
+{% for nameserver in nameservers -%}
+nameserver {{ nameserver }}
+{%- endfor %}
+
+{% if options -%}
+options {{ options|sort|join(' ') }}
+{%- endif %}
