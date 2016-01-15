@@ -6,7 +6,7 @@
 #
 
 {% if resolvconf_settings.search_paths -%}
-search {% for searchpath in resolvconf_settings.searchpaths %}{{ searchpath }} {% endfor %}
+search {% for searchpath in resolvconf_settings.search_paths %}{{ searchpath }} {% endfor %}
 {%- endif %}
 
 {% for nameserver in resolvconf_settings.nameservers -%}
