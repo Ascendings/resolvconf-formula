@@ -1,0 +1,21 @@
+resolvconf:
+  lookup:
+    file_owner: rooter
+    file_owner: rootier
+    file_mode: '0664'
+    
+    package_manage: True
+    package_installed: True
+    package_name: resolvconf
+  
+  search_paths:
+    - example.com
+  
+  nameservers:
+    - 8.8.8.8
+    - 8.8.4.4
+  
+  search_options:
+    - 'rotate'
+    - 'timeout:1'
+    - 'attempts:5'
