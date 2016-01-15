@@ -4,15 +4,12 @@
 #
 # This file is managed by Salt! Do not edit by hand!
 #
-
-{% if resolvconf_settings.search_paths -%}
+{% if resolvconf_settings.search_paths %}
 search {% for searchpath in resolvconf_settings.search_paths %}{{ searchpath }} {% endfor %}
 {%- endif %}
-
-{% for nameserver in resolvconf_settings.nameservers -%}
+{% for nameserver in resolvconf_settings.nameservers %}
 nameserver {{ nameserver }}
 {%- endfor %}
-
-{% if resolvconf_settings.search_options -%}
+{% if resolvconf_settings.search_options %}
 options {{ resolvconf_settings.search_options|sort|join(' ') }}
 {%- endif %}
