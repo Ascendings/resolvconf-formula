@@ -1,11 +1,12 @@
 {% from "resolvconf/map.jinja" import resolvconf_settings with context %}
 
-{% if resolvconf_settings.package_installed %}
-/etc/resolv.conf:
-{% else %}
-/etc/resolvconf/resolv.conf.d/base
-{% endif %}
+resolv-file:
   file.managed:
+    {% if resolvconf_settings.package_installed %}
+    - name: /etc/resolv.conf:
+    {% else %}
+    - name: /etc/resolvconf/resolv.conf.d/base
+    {% endif %}
     - source: salt://resolvconf/files/resolvconf.jinja
     - user: {{ resolvconf_settings.file_owner }}
     - group: {{ resolvconf_settings.file_group }}
@@ -13,10 +14,12 @@
     - template: jinja
 
 {% if resolvconf_settings.package_manage %}
-{{ package_name }}:
+resolv-pkg:
   {% if resolvconf_settings.package_installed %}
-  pkg.installed: []
+  pkg.installed:
+    - name: {{ resolvconf_settings.package_name %}
   {% else %}
-  pkg.removed: []
+  pkg.removed:
+    - name: {{ resolvconf_settings.package_name %}
   {% endif %}
 {% endif %}
