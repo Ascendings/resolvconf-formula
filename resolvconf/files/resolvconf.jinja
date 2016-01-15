@@ -5,14 +5,14 @@
 # This file is managed by Salt! Do not edit by hand!
 #
 
-{% if search_paths -%}
-search {% for searchpath in searchpaths %}{{ searchpath }} {% endfor %}
+{% if resolvconf_settings.search_paths -%}
+search {% for searchpath in resolvconf_settings.searchpaths %}{{ searchpath }} {% endfor %}
 {%- endif %}
 
-{% for nameserver in nameservers -%}
+{% for nameserver in resolvconf_settings.nameservers -%}
 nameserver {{ nameserver }}
 {%- endfor %}
 
-{% if search_options -%}
-options {{ options|sort|join(' ') }}
+{% if resolvconf_settings.search_options -%}
+options {{ resolvconf_settings.search_options|sort|join(' ') }}
 {%- endif %}
