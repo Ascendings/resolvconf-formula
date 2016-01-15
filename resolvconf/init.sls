@@ -17,9 +17,9 @@ resolv-file:
 resolv-pkg:
   {% if resolvconf_settings.package_installed %}
   pkg.installed:
-    - name: {{ resolvconf_settings.package_name %}
+    - name: {{ resolvconf_settings.package_name }}
   {% else %}
   pkg.removed:
-    - name: {{ resolvconf_settings.package_name %}
+    - name: {{ resolvconf_settings.package_name }}
   {% endif %}
 {% endif %}
