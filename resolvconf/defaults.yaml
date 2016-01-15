@@ -1,4 +1,4 @@
-hosts:
+resolvconf:
   # search paths (domains)
   search_paths: []
   
