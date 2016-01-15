@@ -3,9 +3,9 @@
 resolv-file:
   file.managed:
     {% if resolvconf_settings.package_installed %}
-    - name: /etc/resolv.conf:
-    {% else %}
     - name: /etc/resolvconf/resolv.conf.d/base
+    {% else %}
+    - name: /etc/resolv.conf
     {% endif %}
     - source: salt://resolvconf/files/resolvconf.jinja
     - user: {{ resolvconf_settings.file_owner }}
